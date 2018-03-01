@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
+
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
@@ -6,29 +8,33 @@ class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 1
+      value: null
     }
   }
 
-  handleChange = (event, index, value) => this.setState({ value })
+  handleChange = (event, index, value) => {
+    if (value){
+      this.setState({ value })
+      this.props.history.push(value)
+    }
+  }
   render() {
     return (
       <div>
         <h3>What café will you make today?</h3>
         <SelectField
-          floatingLabelText="Type"
+          floatingLabelText="Go wild"
           value={this.state.value}
           onChange={this.handleChange}
         >
-          <MenuItem value={1} primaryText="Drip" />
-          <MenuItem value={2} primaryText="Chemex" />
-          <MenuItem value={3} primaryText="Aeropress" />
-          <MenuItem value={4} primaryText="Cold Brew (Breville)" />
-          <MenuItem value={5} primaryText="Cold Brew (OXO)" />
+          <MenuItem value={null} primaryText="" />
+          {this.props.types.map(type => (
+            <MenuItem key={type.url} value={type.url} primaryText={type.name} />
+          ))}
         </SelectField>
       </div>
     )
   }
 }
 
-export default Main
+export default withRouter(Main)

@@ -14,35 +14,40 @@ class App extends Component {
     this.state = {
       types: [
         {
-          type: 'Drip',
+          name: 'Drip',
+          url: '/drip',
           grind: '13',
           ratio: '2',
           bloom: '0',
           brew: '0'
         },
         {
-          type: 'Chemex',
+          name: 'Chemex',
+          url: '/chemex',
           grind: '20',
           ratio: '2',
           bloom: '0',
           brew: '0'
         },
         {
-          type: 'Aeropress',
+          name: 'Aeropress',
+          url: '/aeropress',
           grind: '13',
           ratio: '2',
           bloom: '0',
           brew: '0'
         },
         {
-          type: 'Cold Brew (Breville)',
+          name: 'Cold Brew (Breville)',
+          url: '/cold-brew-breville',
           grind: '13',
           ratio: '2',
           bloom: '0',
           brew: '0'
         },
         {
-          type: 'Cold Brew (OXO)',
+          name: 'Cold Brew (OXO)',
+          url: '/cold-brew-oxo',
           grind: '13',
           ratio: '2',
           bloom: '0',
@@ -61,13 +66,15 @@ class App extends Component {
           showMenuIconButton={false}
           onTitleClick={() => this.props.history.push('/')}
         />
-        <Switch>
-          <Route exact path="/" render={() => <Main styles={this.state.styles} />} />
-          <Route
-            path="/:type"
-            render={() => <Selection styles={this.state.styles} />}
-          />
-        </Switch>
+        <Route
+          path="/"
+          render={() => <Main types={this.state.types} />}
+        />
+        <Route
+          path="/:type"
+          render={() => <Selection types={this.state.types} />}
+        />
+
         {/* <BottomNavBar /> */}
       </div>
     )
