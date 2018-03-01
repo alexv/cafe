@@ -1,21 +1,56 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router'
+import { Switch, Route, withRouter } from 'react-router'
 
 import AppBar from 'material-ui/AppBar'
 
 import './App.css'
-import BottomNavBar from './components/BottomNavBar'
+// import BottomNavBar from './components/BottomNavBar'
 import Main from './components/Main'
+import Selection from './components/Selection'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      value: 1
+      types: [
+        {
+          type: 'Drip',
+          grind: '13',
+          ratio: '2',
+          bloom: '0',
+          brew: '0'
+        },
+        {
+          type: 'Chemex',
+          grind: '20',
+          ratio: '2',
+          bloom: '0',
+          brew: '0'
+        },
+        {
+          type: 'Aeropress',
+          grind: '13',
+          ratio: '2',
+          bloom: '0',
+          brew: '0'
+        },
+        {
+          type: 'Cold Brew (Breville)',
+          grind: '13',
+          ratio: '2',
+          bloom: '0',
+          brew: '0'
+        },
+        {
+          type: 'Cold Brew (OXO)',
+          grind: '13',
+          ratio: '2',
+          bloom: '0',
+          brew: '0'
+        }
+      ]
     }
   }
-
-  handleChange = (event, index, value) => this.setState({ value })
 
   render() {
     return (
@@ -23,14 +58,20 @@ class App extends Component {
         <AppBar
           title="Café"
           iconClassNameRight="muidocs-icon-navigation-expand-more"
+          showMenuIconButton={false}
+          onTitleClick={() => this.props.history.push('/')}
         />
         <Switch>
-          <Route path='/' component={Main} />
+          <Route exact path="/" render={() => <Main styles={this.state.styles} />} />
+          <Route
+            path="/:type"
+            render={() => <Selection styles={this.state.styles} />}
+          />
         </Switch>
-        <BottomNavBar />
+        {/* <BottomNavBar /> */}
       </div>
     )
   }
 }
 
-export default App
+export default withRouter(App)

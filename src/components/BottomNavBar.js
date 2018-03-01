@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import FontIcon from 'material-ui/FontIcon'
 import {
   BottomNavigation,
@@ -23,23 +24,24 @@ class BottomNavigationExampleSimple extends Component {
   select = index => this.setState({ selectedIndex: index })
 
   render() {
+    console.log(this.props)
     return (
       <Paper zDepth={1}>
         <BottomNavigation selectedIndex={this.state.selectedIndex}>
           <BottomNavigationItem
             label="Faves"
             icon={starIcon}
-            onClick={() => this.select(0)}
+            onClick={() => this.props.history.push('/favorites')}
           />
           <BottomNavigationItem
             label="COFFEEEE"
             icon={coffeeIcon}
-            onClick={() => this.select(1)}
+            onClick={() => this.props.history.push('/')}
           />
           <BottomNavigationItem
             label="History"
             icon={historyIcon}
-            onClick={() => this.select(2)}
+            onClick={() => this.props.history.push('/history')}
           />
         </BottomNavigation>
       </Paper>
@@ -47,4 +49,4 @@ class BottomNavigationExampleSimple extends Component {
   }
 }
 
-export default BottomNavigationExampleSimple
+export default withRouter(BottomNavigationExampleSimple)

@@ -3,6 +3,14 @@ import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
 class Main extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      value: 1
+    }
+  }
+
+  handleChange = (event, index, value) => this.setState({ value })
   render() {
     return (
       <div>
