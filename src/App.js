@@ -1,40 +1,33 @@
 import React, { Component } from 'react'
+import { Switch, Route } from 'react-router'
+
+import AppBar from 'material-ui/AppBar'
+
 import './App.css'
+import BottomNavBar from './components/BottomNavBar'
+import Main from './components/Main'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      type: ''
+      value: 1
     }
   }
+
+  handleChange = (event, index, value) => this.setState({ value })
+
   render() {
     return (
       <div className="App">
-        <h1>Café</h1>
-        <h3>What café will you make today?</h3>
-        <select>
-          <option>Drip</option>
-          <option>Chemex</option>
-          <option>Aeropress</option>
-          <option>Cold Brew (Breville)</option>
-          <option>Cold Brew (OXO)</option>
-        </select>
-        <h3>Grind Setting</h3>
-        <p>13</p>
-        <h3>Water and Coffee</h3>
-        <table>
-          <tbody>
-            <tr>
-              <th>Water (oz)</th>
-              <th>Coffee (g)</th>
-            </tr>
-            <tr>
-              <td>12</td>
-              <td>30</td>
-            </tr>
-          </tbody>
-        </table>
+        <AppBar
+          title="Café"
+          iconClassNameRight="muidocs-icon-navigation-expand-more"
+        />
+        <Switch>
+          <Route path='/' component={Main} />
+        </Switch>
+        <BottomNavBar />
       </div>
     )
   }
