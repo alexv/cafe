@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router'
+import { Link } from 'react-router-dom'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const Selection = props => {
@@ -18,7 +19,9 @@ const Selection = props => {
         </li>
       </ul>
       <br />
-      <RaisedButton label="Brew!" primary={true} fullWidth={true} />
+      <Link to={props.location.pathname + '/brew'}>
+        <RaisedButton label="Brew!" primary={true} fullWidth={true}/>
+      </Link>
     </div>
   )
 }
