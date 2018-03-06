@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route, withRouter } from 'react-router'
+import { Route, withRouter } from 'react-router'
 
 import AppBar from 'material-ui/AppBar'
 
@@ -16,42 +16,57 @@ class App extends Component {
         {
           name: 'Drip',
           url: '/drip',
-          grind: '13',
-          ratio: '2',
-          bloom: '0',
-          brew: '0'
+          grind: 13,
+          fixed: false,
+          ratio: 16,
+          defaultCoffeeGrams: 40,
+          bloomTime: null,
+          bloomWater: null,
+          brewTime: null
         },
         {
           name: 'Chemex',
           url: '/chemex',
-          grind: '20',
-          ratio: '2',
-          bloom: '0',
-          brew: '0'
+          grind: 20,
+          fixed: true,
+          ratio: 16,
+          defaultCoffeeGrams: 42,
+          bloomTime: 45,
+          bloomWater: 150,
+          brewTime: 195
         },
         {
           name: 'Aeropress',
           url: '/aeropress',
-          grind: '13',
-          ratio: '2',
-          bloom: '0',
-          brew: '0'
+          grind: 13,
+          fixed: true,
+          ratio: 13,
+          defaultCoffeeGrams: 17,
+          bloomTime: null,
+          bloomWater: null,
+          brewTime: 75
         },
         {
           name: 'Cold Brew (Breville)',
           url: '/cold-brew-breville',
-          grind: '13',
-          ratio: '2',
-          bloom: '0',
-          brew: '0'
+          grind: 20,
+          fixed: false,
+          ratio: 16,
+          defaultCoffeeGrams: 40,
+          bloomTime: 0,
+          bloomWater: 0,
+          brewTime: 0
         },
         {
           name: 'Cold Brew (OXO)',
           url: '/cold-brew-oxo',
-          grind: '13',
-          ratio: '2',
-          bloom: '0',
-          brew: '0'
+          grind: 20,
+          fixed: true,
+          ratio: 4,
+          defaultCoffeeGrams: 284,
+          bloomTime: null,
+          bloomWater: null,
+          brewTime: 43200
         }
       ]
     }

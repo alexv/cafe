@@ -12,10 +12,17 @@ class Main extends Component {
     }
   }
 
+  componentDidMount() {
+    this.setState({ value: this.props.location.pathname })
+  }
+
   handleChange = (event, index, value) => {
-    if (value){
+    if (value) {
       this.setState({ value })
       this.props.history.push(value)
+    } else {
+      this.setState({ value: null })
+      this.props.history.push('/')
     }
   }
   render() {
