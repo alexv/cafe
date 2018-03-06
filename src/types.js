@@ -40,9 +40,9 @@ module.exports = {
       fixed: false,
       ratio: 16,
       defaultCoffeeGrams: 40,
-      bloomTime: 0,
-      bloomWater: 0,
-      brewTime: 0
+      bloomTime: null,
+      bloomWater: null,
+      brewTime: 43200
     },
     {
       name: 'Cold Brew (OXO)',

@@ -38,10 +38,10 @@ class Main extends Component {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center'
+          alignItems: 'center'
         }}
       >
-        <h3>What café will you make today?</h3>
+        <h2>What café will you make today?</h2>
         <SelectField
           floatingLabelText="Go wild"
           value={this.state.value}

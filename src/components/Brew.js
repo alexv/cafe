@@ -10,7 +10,9 @@ class Brew extends React.Component {
     )
     this.state = {
       totalTime: selection.bloomTime + selection.brewTime,
-      timeRemaining: selection.bloomTime + selection.brewTime
+      timeRemaining: selection.bloomTime + selection.brewTime,
+      selection: selection,
+      statusMessage: `Get to blooming!`
     }
   }
 
@@ -23,11 +25,15 @@ class Brew extends React.Component {
   }
 
   tick = () => {
+    const newState = {}
     const newTime = this.state.timeRemaining - 1
-    this.setState(state => ({ timeRemaining: newTime }))
-    if (newTime !== 0) {
-      this.timer = setTimeout(this.tick, 1000)
+    if (newTime !== 0) this.timer = setTimeout(this.tick, 1000)
+    if (newTime === 0) newState.statusMessage = 'All done!'
+    if (newTime === this.state.totalTime - this.state.selection.bloomTime) {
+      newState.statusMessage = 'Now wait...'
     }
+    newState.timeRemaining = newTime
+    this.setState(newState)
   }
 
   formatTime() {
@@ -45,10 +51,16 @@ class Brew extends React.Component {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center'
+          alignItems: 'center',
+          width: '250px'
         }}
       >
-        Brew {this.props.match.params.type}
+        <h2 style={{ alignSelf: 'flex-start' }}>
+          Nothing like a good<br />
+          {this.state.selection.name}
+        </h2>
+        <br />
+        <h3>{this.state.statusMessage}</h3>
         <h1>{this.formatTime()}</h1>
         <LinearProgress
           mode="determinate"
