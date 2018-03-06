@@ -19,7 +19,7 @@ class App extends Component {
           grind: 13,
           fixed: false,
           ratio: 16,
-          defaultCoffeeGrams: 40,
+          defaultCoffeeGrams: 50,
           bloomTime: null,
           bloomWater: null,
           brewTime: null
