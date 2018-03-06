@@ -29,7 +29,7 @@ module.exports = {
       fixed: true,
       ratio: 13,
       defaultCoffeeGrams: 17,
-      bloomTime: null,
+      bloomTime: 10,
       bloomWater: null,
       brewTime: 75
     },

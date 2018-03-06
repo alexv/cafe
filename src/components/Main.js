@@ -34,7 +34,13 @@ class Main extends Component {
       type => type.url === this.state.value
     )
     return (
-      <div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center'
+        }}
+      >
         <h3>What café will you make today?</h3>
         <SelectField
           floatingLabelText="Go wild"

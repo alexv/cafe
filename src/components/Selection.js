@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 const Selection = ({selection, location}) => {
   return (
-    <div style={{ width: '256px' }}>
+    <div>
       <h3>Preparation</h3>
       <ul>
         <li>Coffee: {selection.defaultCoffeeGrams}g</li>
