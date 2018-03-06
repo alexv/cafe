@@ -4,6 +4,8 @@ import { withRouter } from 'react-router'
 import SelectField from 'material-ui/SelectField'
 import MenuItem from 'material-ui/MenuItem'
 
+import Selection from './Selection'
+
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +15,9 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({ value: this.props.location.pathname })
+    if (this.props.location.pathname !== '/') {
+      this.setState({ value: this.props.location.pathname })
+    }
   }
 
   handleChange = (event, index, value) => {
@@ -26,6 +30,9 @@ class Main extends Component {
     }
   }
   render() {
+    const selection = this.props.types.find(
+      type => type.url === this.state.value
+    )
     return (
       <div>
         <h3>What café will you make today?</h3>
@@ -39,6 +46,7 @@ class Main extends Component {
             <MenuItem key={type.url} value={type.url} primaryText={type.name} />
           ))}
         </SelectField>
+        {this.state.value && <Selection selection={selection} />}
       </div>
     )
   }

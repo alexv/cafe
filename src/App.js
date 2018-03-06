@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, withRouter } from 'react-router'
+import { Switch, Route, withRouter } from 'react-router'
 
 import AppBar from 'material-ui/AppBar'
 
@@ -7,7 +7,6 @@ import './App.css'
 import coffeeData from './types'
 import Main from './components/Main'
 import Brew from './components/Brew'
-import Selection from './components/Selection'
 
 class App extends Component {
   render() {
@@ -19,17 +18,13 @@ class App extends Component {
           showMenuIconButton={false}
           onTitleClick={() => this.props.history.push('/')}
         />
-        <Route path="/" render={() => <Main types={coffeeData} />} />
-        <Route
-          path="/:type"
-          render={() => <Selection types={coffeeData} />}
-        />
-        <Route
-          path="/:type/brew"
-          render={() => <Brew types={coffeeData} />}
-        />
-
-        {/* <BottomNavBar /> */}
+        <Switch>
+          <Route
+            path="/:type/brew"
+            render={() => <Brew types={coffeeData.types} />}
+          />
+          <Route path="/" render={() => <Main types={coffeeData.types} />} />
+        </Switch>
       </div>
     )
   }
