@@ -41,7 +41,7 @@ class Main extends Component {
           alignItems: 'center'
         }}
       >
-        <h2>What café will you make today?</h2>
+        <h2>What café will you make today? </h2>
         <SelectField
           floatingLabelText="Go wild"
           value={this.state.value}
