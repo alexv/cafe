@@ -7,6 +7,7 @@ import './App.css'
 import coffeeData from './types'
 import Main from './components/Main'
 import Brew from './components/Brew'
+import Tag from './components/Tag'
 
 class App extends Component {
   render() {
@@ -25,6 +26,7 @@ class App extends Component {
           />
           <Route path="/" render={() => <Main types={coffeeData.types} />} />
         </Switch>
+        <Tag />
       </div>
     )
   }
